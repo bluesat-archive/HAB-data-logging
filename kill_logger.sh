@@ -6,24 +6,35 @@
 # BLUEsat December 2017
 
 file1="BMP280/.PID"
+file2="DHT22/.PID"
+file3="MPU9250/.PID"
+file4="MAX31865/.PID"
+
+if [ -f "$file1" ] && [ -f "$file2" ] && [ -f "$file3" ] && [ -f "$file4" ]
+then
+	echo "Killing loggers..."
+else
+	echo "Loggers have not been started. Start them using ./start_logger.sh"
+	exit 1
+fi
+
 read -r BMP_PID<$file1
 kill $BMP_PID
 echo "$BMP_PID was killed"
 
-file2="DHT22/.PID"
 read -r DHT_PID<$file2
 kill $DHT_PID
 echo "$DHT_PID was killed"
 
-file3="MPU9250/.PID"
 read -r MPU_PID<$file3
 kill $MPU_PID
 echo "$MPU_PID was killed"
 
-file4="MAX31865/.PID"
 read -r MAX_PID<$file4
 kill $MAX_PID
 echo "$MAX_PID was killed"
 
 echo "
 All loggers successfully killed."
+
+./stop_LEDs.sh

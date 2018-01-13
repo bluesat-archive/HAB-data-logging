@@ -1,5 +1,16 @@
 #!/bin/bash
 
+file1="BMP280/.PID"
+file2="DHT22/.PID"
+file3="MPU9250/.PID"
+file4="MAX31865/.PID"
+
+if [ -f "$file1" ] || [ -f "$file2" ] || [ -f "$file3" ] || [ -f "$file4" ]
+then
+	echo "Logging scripts are already running. Type ./kill_logger.sh to stop them"
+	exit 1
+fi
+
 sudo pigpiod
 echo "
 \"Can't initialise pigpio library\" message will display if the pigpiod daemon is already running. This is normal.
@@ -26,3 +37,6 @@ echo "MAX Process Number:" $!
 
 echo "
 Started logging..."
+
+cd ..
+./heartbeat_onboard_LEDs.sh

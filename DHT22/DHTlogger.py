@@ -41,7 +41,7 @@ def readDHT22():
 
 # Variables:
 rowNumber = 1		# this is the counter for the overall row number, regardless of the number of log files generated
-sleepTime = 3		# time to sleep between sensor reads in seconds
+sleepTime = 3		# time to sleep between sensor reads in seconds (DO NOT READ THE DHT22 MORE THAN ONCE EVERY 2 SECS)
 
 
 try:
