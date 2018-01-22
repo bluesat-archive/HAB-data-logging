@@ -11,7 +11,7 @@ file3="MPU9250/.PID"
 file4="MAX31865/.PID"
 file5="DS18B20/.PID"
 
-if [ -f "$file1" ] || [ -f "$file2" ] || [ -f "$file3" ] || [ -f "$file4" ] || [ -f "$file5" ]
+if [ -f "$file1" ] && [ -f "$file2" ] && [ -f "$file3" ] && [ -f "$file4" ] && [ -f "$file5" ]
 then
 	echo "Killing loggers..."
 else
