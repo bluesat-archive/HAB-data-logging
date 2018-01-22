@@ -1,24 +1,37 @@
 #!/bin/bash
 
-cd BMP280/data
-rm -f *.csv
+if [ -f "BMP280/.PID" ] || [ -f "DHT22/.PID" ] || [ -f "MPU9250/.PID" ] || [ -f "MAX31865/.PID" ] || [ -f "DS18B20/.PID" ]
+then
+	echo "Recording script is running. Please stop this first by running ./kill.sh"
+	exit 1
+fi
 
-cd ..
-cd ..
-cd DHT22/data
-rm -f *.csv
 
-cd ..
-cd ..
-cd MPU9250/data
-rm -f *.csv
-
-cd ..
-cd ..
-cd MAX31865/data
-rm -f *.csv
-
-cd ..
-cd ..
-cd DS18B20/data
-rm -f *.csv
+echo "
+Do you wish to delete all logs? 
+Enter Option No. and hit enter.
+WARNING: THIS CANNOT BE UNDONE!
+"
+select yn in "Yes" "No" "Cancel"; do
+    case $yn in
+        Yes )
+		rm -f BMP280/data/*.csv		
+		rm -f DHT22/data/*.csv
+		rm -f MPU9250/data/*.csv
+		rm -f MAX31865/data/*.csv
+		rm -f DS18B20/data/*.csv
+		echo "
+Cleaned up all log files."
+		exit 1;;
+        No )
+		echo "
+Did not remove anything"
+		exit 1;;
+	Cancel )
+		echo "
+Cancelled"
+		exit 1;;
+	*)
+		echo "Invalid Option";;
+    esac
+done
