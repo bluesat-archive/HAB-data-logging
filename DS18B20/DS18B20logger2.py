@@ -12,13 +12,13 @@ import glob
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
-device_folder = glob.glob(base_dir + '28*')[0]
+device_folder = glob.glob(base_dir + '28*')[1]
 device_file = device_folder + '/w1_slave'
 
 
 # The following code will write the Process ID of this script to a hidden file
 pid = os.getpid()
-PIDfilename = ".PID"
+PIDfilename = ".PID2"
 PIDfile = open(PIDfilename, "wt")
 PIDfile.write(str(pid))
 PIDfile.close()
@@ -58,7 +58,7 @@ sleepTime = 1		# time to wait between reading from the sensor in seconds
 
 try:
 	while True: 									# infinite loop
-		filename = 'data/' + time.strftime('%I%M%p_%d-%m-%y') + '.csv'		# the strftime argument can be changed to produce a different time/date structure
+		filename = 'data2/' + time.strftime('%I%M%p_%d-%m-%y') + '.csv'		# the strftime argument can be changed to produce a different time/date structure
 		with open(filename, "wt") as ofile:					# ofile is the file handler for our new file (w means write, and t means text mode)
 			writer = csv.writer(ofile)					# the csv writer module is initialised
 			if rowNumber == 1:

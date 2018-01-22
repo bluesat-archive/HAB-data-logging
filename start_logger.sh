@@ -4,8 +4,9 @@ file1="BMP280/.PID"
 file2="DHT22/.PID"
 file3="MPU9250/.PID"
 file4="MAX31865/.PID"
+file5="DS18B20/.PID"
 
-if [ -f "$file1" ] || [ -f "$file2" ] || [ -f "$file3" ] || [ -f "$file4" ]
+if [ -f "$file1" ] || [ -f "$file2" ] || [ -f "$file3" ] || [ -f "$file4" ] || [ -f "$file5" ]
 then
 	echo "Logging scripts are already running. Type ./kill_logger.sh to stop them"
 	exit 1
@@ -34,6 +35,11 @@ cd ..
 cd MAX31865
 python MAX31865logger.py &
 echo "MAX Process Number:" $!
+
+cd ..
+cd DS18B20
+python DS18B20logger.py &
+echo "B20 Process Number:" $!
 
 echo "
 Started logging..."

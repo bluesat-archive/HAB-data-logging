@@ -9,8 +9,9 @@ file1="BMP280/.PID"
 file2="DHT22/.PID"
 file3="MPU9250/.PID"
 file4="MAX31865/.PID"
+file5="DS18B20/.PID"
 
-if [ -f "$file1" ] && [ -f "$file2" ] && [ -f "$file3" ] && [ -f "$file4" ]
+if [ -f "$file1" ] || [ -f "$file2" ] || [ -f "$file3" ] || [ -f "$file4" ] || [ -f "$file5" ]
 then
 	echo "Killing loggers..."
 else
@@ -33,6 +34,10 @@ echo "$MPU_PID was killed"
 read -r MAX_PID<$file4
 kill $MAX_PID
 echo "$MAX_PID was killed"
+
+read -r B20_PID<$file5
+kill $B20_PID
+echo "$B20_PID was killed"
 
 echo "
 All loggers successfully killed."

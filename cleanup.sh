@@ -17,3 +17,8 @@ cd ..
 cd ..
 cd MAX31865/data
 rm -f *.csv
+
+cd ..
+cd ..
+cd DS18B20/data
+rm -f *.csv
