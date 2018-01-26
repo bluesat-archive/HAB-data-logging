@@ -45,7 +45,7 @@ echo "B20 Process Number:" $!
 cd ../CPUtemp
 ./temperature_log.sh &
 echo "$!" > .PID
-echo "CPU temp_logger Process Number:" $!
+echo "CPU Process Number:" $!
 
 echo "
 Started logging..."
