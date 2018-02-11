@@ -43,7 +43,7 @@ python DS18B20logger2.py &
 echo "B20 Process Number:" $!
 
 cd ../CPUtemp
-./temperature_log.sh &
+./CPUlogger.py &
 echo "$!" > .PID
 echo "CPU Process Number:" $!
 

@@ -1,5 +1,4 @@
 # Import required modules
-import smbus
 import FaBo9Axis_MPU9250
 import time
 import sys

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 timestamp=`date +%I%M%p_%d-%m-%y`
-filepath=/home/pi/Desktop/HAB-data-logging/CPUtemp/data/$timestamp.csv
+filepath=data/$timestamp.csv
 echo "CPU Temperature Log (*C) - $(date)" > $filepath
 echo "Time,Temperature" >> $filepath
 while :
