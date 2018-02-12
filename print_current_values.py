@@ -2,12 +2,10 @@
 
 # Import required modules
 import pigpio
-import os
+import smbus2
 import time
 import DHT22
-import smbus2
 import bme280
-import glob
 import max31865
 import FaBo9Axis_MPU9250
 
